@@ -25,7 +25,8 @@ def selects_the_titles_and_amount_over_goal_of_all_projects_that_have_met_their_
 "SELECT projects.title, projects.funding_goal, SUM(pledges.amount)
 FROM projects
 JOIN pledges ON projects.id = pledges.user_id
-GROUP BY (projects.title) HAVING SUM(bonus) > 1000;
+GROUP BY (projects.title)
+HAVING SUM(pledges - funding_goal);
 "
 end
 
